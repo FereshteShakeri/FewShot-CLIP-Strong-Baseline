@@ -1,0 +1,5 @@
+# ------ Basic Config ------
+dataset: 'caltech101'
+
+
+

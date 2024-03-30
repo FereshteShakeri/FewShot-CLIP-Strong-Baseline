@@ -1,0 +1,52 @@
+# ------ root_path/dataset_name ------
+root_path: '/mnt/data1/' # '/mnt/data1/' #Set the datasets path here
+output_dir: './results'
+
+
+
+# ------ Basic Config ------
+method: 'LinearProbe_P2' # 'ClipAdapter' 'LinearProbe'  'TIPAdapter' 'LinearProbe_alpha_GD_val' 'COOP'
+shots: 4
+tasks: 10
+backbone: 'RN50'
+load_pre_feat: False # Set to True after first run
+
+
+# ------ Hyper Parameters ------
+lr: 0.001 # 0.001 for Tip Adapter, COOP 0.002, Clipadapter 0.01
+train_epoch: 300 # tip adapter: 20, Coop: 200 , linear-Probe: 300
+batch_size: 256 # 32 clip adaper , 256 tip adapter & ours , 32 Coop
+
+
+# COOP
+NCTX: 16
+CTX_INIT: ""
+CLASS_TOKEN_POSITION: "end"
+CSC: False
+WARMUP_EPOCH: 1
+WARMUP_CONS_LR: 0.00001
+PREC: "fp16"
+
+# CLIP_Adapter
+search_alpha_ca: False
+alpha_ca: 0.5
+
+# Tip_Adapter
+grid_search: True
+finetune: True # Whether to finetune or not for Tip-Adapter
+# ------ Load Cache and Features ------
+search_hp: True
+load_cache: False # Set to True after first run
+search_scale: [50, 50] 
+search_step: [200, 200]
+init_beta: 1
+init_alpha: 1 
+init_alpha_scale: 10
+augment_epoch: 1
+
+# Linear-Probe
+num_step: 8
+
+# LP++
+case: 1 #2
+lr_temp0: 5 # eta_0 for LP++ [1,5] for case1
