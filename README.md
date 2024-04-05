@@ -1,11 +1,8 @@
-# LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP
+# CVPR 2024 paper: LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP
 
 ## Introduction
-   
 
-LP++ is an LP-based few-shot CLIP adaption approach where the linear classifier weights are learnable functions of the text embedding, with class-wise multipliers blending image and text knowledge. We propose a computationally efficient block coordinate Majorize-Minimize (MM) descent algorithm to learn the two variables in our objective function, i.e., the class visual prototypes and blending parameters.
-Furthermore, by examining the mathematical properties of our loss (e.g., Lipschitz gradient continuity), we build majorizing functions yielding fast convergence and derive approximations of the loss's minima, which provide data-informed initialization of the variables. LP++ shows comparable performances compared to few-shot CLIP SOTA methods over 11 datasets and it operates in black-box, relaxes intensive validation searches for the optimization hyper-parameters, and runs orders-of-magnitudes faster than state-of-the-art few-shot CLIP methods. 
-
+LP++  is a simple generalization of the standard linear-probe classifier, which integrates text knowledge: We express the linear classifier weights as learnable functions of the text embeddings, with class-wise multipliers blending image and text features. Surprisingly, LP++ outperforms the recent, strongly emergent and quite convoluted literature on few-shot CLIP adaptation (e.g., popular prompt-learning methods such as CoOp), while running orders-of-magnitudes faster, operating in a black-box setting and removing intensive validation searches for the optimization hyper-parameters. 
 
 ## Requirements
 
