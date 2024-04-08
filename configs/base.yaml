@@ -46,7 +46,3 @@ augment_epoch: 1
 
 # Linear-Probe
 num_step: 8
-
-# LP++
-case: 1 #2
-lr_temp0: 5 # eta_0 for LP++ [1,5] for case1

@@ -2,8 +2,9 @@
 
 ## Introduction
 
-LP++  is a simple generalization of the standard linear-probe classifier, which integrates text knowledge: We express the linear classifier weights as learnable functions of the text embeddings, with class-wise multipliers blending image and text features. Surprisingly, LP++ outperforms the recent, strongly emergent and quite convoluted literature on few-shot CLIP adaptation (e.g., popular prompt-learning methods such as CoOp), while running orders-of-magnitudes faster, operating in a black-box setting and removing intensive validation searches for the optimization hyper-parameters. 
+LP++  is a simple generalization of the standard linear-probe classifier, which integrates text knowledge: We express the linear classifier weights as learnable functions of the text embeddings, with class-wise multipliers blending image and text features. Surprisingly, LP++ outperforms the recent, strongly emergent and quite convoluted literature on few-shot CLIP adaptation (e.g., popular prompt-learning methods such as CoOp), while running orders-of-magnitudes faster, operating in a black-box setting and removing intensive validation searches for the optimization hyper-parameters. [[Paper](https://arxiv.org/abs/2404.02285)]
 
+<img src="./images/LP++1.png" width = "600" alt="" align=center /> <br/>
 ## Requirements
 
 
@@ -26,7 +27,6 @@ Follow [DATASET.md](https://github.com/gaopengcuhk/Tip-Adapter/blob/main/DATASET
 ## Get Started
 ### Configs
 Specify basic configuration as (num_shots, num_tasks, method, etc) and hyperparameters in `configs/base.yaml`. 
-For LP++, case = 1 is the default setting and corresponds to the Lipschitz constant in the paper, i.e. Prop. 2 and Eq. (13), whereas case = 2 corresponds to the the one in Eq. (21).
 
 ### Experiments
 
@@ -43,9 +43,19 @@ python main.py --base_config configs/base.yaml --dataset_config configs/{dataset
 
 Example of running LP++ on caltech dataset in 16 shot setting:
 ```bash
-python main.py --base_config configs/base.yaml --dataset_config configs/{dataset_name}.yaml --opt root_path {DATA_PATH} output_dir {OUTPUT_PATH} method LinearProbe_P2 case 1 shots 16 tasks 10
+python main.py --base_config configs/base.yaml --dataset_config configs/{dataset_name}.yaml --opt root_path {DATA_PATH} output_dir {OUTPUT_PATH} method LinearProbe_P2 shots 16 tasks 10
 ```
 
 
 [This repo is built on top of [TipAdapter](https://github.com/gaopengcuhk/Tip-Adapter).]
 
+# Citation
+
+If you find this repository useful, please consider citing this paper:
+```
+@inproceedings{lp24,
+    title={LP++: A Surprisingly Strong Linear Probe for Few-Shot CLIP},
+    author={Yunshi Huang and Fereshteh Shakeri and Jose Dolz and Malik Boudiaf and Houda Bahig and Ismail Ben Ayed},
+    booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2024}
+    }
